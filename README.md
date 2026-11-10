@@ -88,8 +88,7 @@ The project will follow these stages:
 5. Correlation analysis.
 6. Data visualization.
 7. Interpretation of results and conclusions.
-
-# 7. Project Structure
+   
 
 ## 7. Project Structure
 
@@ -129,11 +128,8 @@ ai101_project82/
 | presentation/ | Stores the final project presentation |
 | video/ | Stores project demonstration video information |
 
-# 8. Libraries
 
-The technologies and Python libraries used will be listed after implementation is finalized.
-
-# 9. Installation and Setup
+# 8. Installation and Setup
 
 ## Setup and Installation
 
@@ -176,40 +172,49 @@ pip install -r requirements.txt
 
 Ensure that `Renewable.csv` is present in the project root directory.
 
-### 5. Run the Project
 
-Execute the main Python script:
+# 9. How to Run the Project
+
+## Steps to Execute
+
+1. Open the project folder in your terminal.
+2. Activate the virtual environment.
+3. Make sure all required dependencies are installed.
+4. Run the main Python script:
 
 ```bash
 python main.py
 ```
 
+For Linux/macOS, if required:
 
-# 10. How to Run the Project
+```bash
+python3 main.py
+```
 
-Exact execution commands will be added after the code is finalized and tested.
+5. Wait for the script to finish execution and display the analysis results.
 
-# 11. Results and Expected Output
+**Note:** Run the command from the project root directory, where the Python script and `Renewable.csv` are located.
+
+
+
+# 10. Results and Expected Output
 
 This section will include actual project results, statistical findings, visualizations and screenshots after execution.
 
-# 12. Presentation and Video
+# 11. Presentation and Video
 
 - Project Presentation: To be added.
 - Project Demonstration Video: To be added.
 
-# 13. AI Use Disclosure
+# 12. AI Use Disclosure
 
 AI tools, if used, will be disclosed with details of their purpose and the verification performed by the team.
 
-# 14. Limitations
+# 13. Limitations
 
 - The selected dataset represents solar photovoltaic generation associated with weather observations at a particular installation.
 - It does not independently provide worldwide country-wise renewable generation data.
 - It does not provide separate wind and hydropower generation measurements.
 - Correlation does not necessarily imply causation.
 - Energy generation may also depend on installed capacity, equipment, infrastructure and other factors.
-
-# 15. Acknowledgements
-
-We acknowledge the guidance of the faculty and teaching assistants of the School of AI and Data Engineering, IIT Ropar, and the providers of the dataset used in this project.
