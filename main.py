@@ -86,3 +86,56 @@ print("\nFinal columns :")
 print(df.columns.tolist())
 print("\nFinal data shape:")
 print(df.shape)
+
+#  dataset structure for ml
+
+print("\n==================DATASET STRUCTURE" \
+"===========")
+
+#display all column names 
+print("\nAvailable Columns :")
+print(df.columns.tolist())
+
+#display data types
+print("\nColumn Data types :")
+print(df.dtypes)
+
+#display first 10 records 
+print("\nDataset preivew:")
+print(df.head(10))
+
+#display numeric columns 
+print("\nNumerical columns ")
+print(df.select_dtypes(include=np.number).columns.tolist())
+
+#display categorical columns 
+print("\nCategorical Columns:")
+print(df.select_dtypes(include='object').columns.tolist())
+
+# feature engineering 
+
+#extract date and time features 
+if'Time'in df.columns:
+
+    df['Year']=df["Time"].dt.year
+    df['Month']=df["Time"].dt.month
+    df['Day']=df["Time"].dt.day
+    df['Hour']=df["Time"].dt.hour
+
+    print("\nTime feature created successfully")
+
+
+
+#display updated dataset
+print("\nupdated dataset:")
+print(df.head())
+
+print("\nupdated dataset shape:")
+print(df.shape)
+
+
+# Save featured engineered dataset
+df.to_csv("feature_engineered_data.csv",index=False)
+
+print("\nFeature engineered dataset savd successfully")
+print("final shape",df.shape)
