@@ -55,7 +55,7 @@ print(df.duplicated().sum())
 #Remove duplicate records
 
 df=df.drop_duplicates()
-print("/nDataset after removing duplicates:")
+print("\nDataset after removing duplicates:")
 print(df.shape)
 
 #Convert Time column into datetime 
