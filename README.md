@@ -88,8 +88,7 @@ The project will follow these stages:
 5. Correlation analysis.
 6. Data visualization.
 7. Interpretation of results and conclusions.
-
-# 7. Project Structure
+   
 
 ## 7. Project Structure
 
@@ -129,39 +128,254 @@ ai101_project82/
 | presentation/ | Stores the final project presentation |
 | video/ | Stores project demonstration video information |
 
-# 8. Technologies and Libraries
 
-The technologies and Python libraries used will be listed after implementation is finalized.
+# 8. Installation and Setup
 
-# 9. Installation and Setup
+## Setup and Installation
 
-Python version and installation requirements will be added after confirmation by the Execution Lead.
+Follow these steps to set up and run the project on your local machine.
 
-# 10. How to Run the Project
+### 1. Clone the Repository
 
-Exact execution commands will be added after the code is finalized and tested.
+```bash
+git clone https://github.com/anishiitrpr/ai101_project82.git
+cd ai101_project82
+```
 
-# 11. Results and Expected Output
+### 2. Create a Virtual Environment
 
-This section will include actual project results, statistical findings, visualizations and screenshots after execution.
+It is recommended to use a virtual environment to manage project dependencies.
 
-# 12. Presentation and Video
+**Windows:**
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+**Linux / macOS:**
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3. Install Dependencies
+
+Install the required Python libraries using the provided `requirements.txt` file.
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Verify Dataset
+
+Ensure that `Renewable.csv` is present in the project root directory.
+
+
+# 9. How to Run the Project
+
+## Steps to Execute
+
+1. Open the project folder in your terminal.
+2. Activate the virtual environment.
+3. Make sure all required dependencies are installed.
+4. Run the main Python script:
+
+```bash
+python main.py
+```
+
+For Linux/macOS, if required:
+
+```bash
+python3 main.py
+```
+
+5. Wait for the script to finish execution and display the analysis results.
+
+**Note:** Run the command from the project root directory, where the Python script and `Renewable.csv` are located.
+
+
+
+# 10. Results and Expected Output
+
+## Output After Execution
+
+After running the project, the program displays the following dataset inspection, cleaning, and preprocessing results.
+
+### 1. Initial Dataset Preview
+
+```text
+         Time             Energy delta[Wh]  GHI  temp  ...  weather_type  hour  month
+0  2017-01-01 00:00:00          0           0.0  1.6   ...       4         0     1
+1  2017-01-01 00:15:00          0           0.0  1.6   ...       4         0     1
+2  2017-01-01 00:30:00          0           0.0  1.6   ...       4         0     1
+3  2017-01-01 00:45:00          0           0.0  1.6   ...       4         0     1
+4  2017-01-01 01:00:00          0           0.0  1.7   ...       4         1     1
+
+[5 rows x 17 columns]
+```
+
+### 2. Dataset Information
+
+```text
+RangeIndex: 196776 entries, 0 to 196775
+Data columns (total 17 columns)
+
+Non-Null Count: 196776 for all 17 columns
+
+dtypes:
+float64(6)
+int64(10)
+str(1)
+
+memory usage: 25.5 MB
+```
+
+### 3. Dataset Dimensions
+
+```text
+(196776, 17)
+```
+
+The dataset contains **196,776 records and 17 columns**.
+
+### 4. Missing Values Analysis
+
+```text
+Missing Values:
+
+Time                      0
+Energy delta[Wh]          0
+GHI                       0
+temp                      0
+pressure                  0
+humidity                  0
+wind_speed                0
+rain_1h                   0
+snow_1h                   0
+clouds_all                0
+isSun                     0
+sunlightTime              0
+dayLength                 0
+SunlightTime/daylength    0
+weather_type              0
+hour                      0
+month                     0
+```
+
+### 5. Duplicate Records
+
+```text
+Duplicate Records:
+0
+```
+
+### 6. Statistical Summary
+
+```text
+       Energy delta[Wh]       GHI          temp
+count  196776.000000     196776.000000  196776.000000
+mean      573.008228         32.596538       9.790521
+std      1044.824047         52.172018       7.995428
+min         0.000000          0.000000     -16.600000
+25%         0.000000          0.000000       3.600000
+50%         0.000000          1.600000       9.300000
+75%       577.000000         46.800000      15.700000
+max      5020.000000        229.200000      35.800000
+
+[8 rows x 16 columns]
+```
+
+### 7. Data Preprocessing
+
+The program performs the following operations:
+
+- Checks missing values.
+- Identifies duplicate records.
+- Removes duplicate records.
+- Converts the `Time` column into datetime format.
+- Displays the cleaned dataset information.
+
+```text
+Dataset after removing duplicates:
+(196776, 17)
+
+Time column converted successfully
+
+datetime64[us]
+```
+
+### 8. Final Dataset Information
+
+```text
+Final Dataset information:
+
+RangeIndex: 196776 entries, 0 to 196775
+Data columns (total 17 columns)
+
+Time                     datetime64[us]
+Energy delta[Wh]         int64
+GHI                      float64
+temp                     float64
+pressure                 int64
+humidity                 int64
+wind_speed               float64
+rain_1h                  float64
+snow_1h                  float64
+clouds_all               int64
+isSun                    int64
+sunlightTime             int64
+dayLength                int64
+SunlightTime/daylength   float64
+weather_type             int64
+hour                     int64
+month                    int64
+
+memory usage: 25.5 MB
+```
+
+### 9. Final Cleaning Results
+
+```text
+Cleaned dataset saved successfully!
+
+Final dataset shape: (196776, 17)
+
+Missing values after cleaning: 0
+Duplicate records after cleaning: 0
+```
+
+### 10. Final Output
+
+```text
+Final columns:
+
+['Time', 'Energy delta[Wh]', 'GHI', 'temp', 'pressure',
+ 'humidity', 'wind_speed', 'rain_1h', 'snow_1h',
+ 'clouds_all', 'isSun', 'sunlightTime', 'dayLength',
+ 'SunlightTime/daylength', 'weather_type', 'hour', 'month']
+
+Final data shape:
+(196776, 17)
+```
+
+The dataset is successfully loaded, inspected, cleaned, and prepared for further analysis.
+
+# 11. Presentation and Video
 
 - Project Presentation: To be added.
 - Project Demonstration Video: To be added.
 
-# 13. AI Use Disclosure
+# 12. AI Use Disclosure
 
 AI tools, if used, will be disclosed with details of their purpose and the verification performed by the team.
 
-# 14. Limitations
+# 13. Limitations
 
 - The selected dataset represents solar photovoltaic generation associated with weather observations at a particular installation.
 - It does not independently provide worldwide country-wise renewable generation data.
 - It does not provide separate wind and hydropower generation measurements.
 - Correlation does not necessarily imply causation.
 - Energy generation may also depend on installed capacity, equipment, infrastructure and other factors.
-
-# 15. Acknowledgements
-
-We acknowledge the guidance of the faculty and teaching assistants of the School of AI and Data Engineering, IIT Ropar, and the providers of the dataset used in this project.
