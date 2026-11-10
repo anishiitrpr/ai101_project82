@@ -129,13 +129,61 @@ ai101_project82/
 | presentation/ | Stores the final project presentation |
 | video/ | Stores project demonstration video information |
 
-# 8. Technologies and Libraries
+# 8. Libraries
 
 The technologies and Python libraries used will be listed after implementation is finalized.
 
 # 9. Installation and Setup
 
-Python version and installation requirements will be added after confirmation by the Execution Lead.
+## Setup and Installation
+
+Follow these steps to set up and run the project on your local machine.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/anishiitrpr/ai101_project82.git
+cd ai101_project82
+```
+
+### 2. Create a Virtual Environment
+
+It is recommended to use a virtual environment to manage project dependencies.
+
+**Windows:**
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+**Linux / macOS:**
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3. Install Dependencies
+
+Install the required Python libraries using the provided `requirements.txt` file.
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Verify Dataset
+
+Ensure that `Renewable.csv` is present in the project root directory.
+
+### 5. Run the Project
+
+Execute the main Python script:
+
+```bash
+python main.py
+```
+
 
 # 10. How to Run the Project
 
