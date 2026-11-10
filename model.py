@@ -24,7 +24,6 @@ target_col = next(c for c in df.columns if any(k in c.lower() for k in ["energy"
 X = df[feature_cols]
 y_reg = df[target_col]
 
-# Binary classification target (1: High Output, 0: Low Output)
 y_cls = (y_reg >= y_reg.median()).astype(int)
 
 print("Features selected:", feature_cols)
@@ -42,3 +41,37 @@ X_test_scaled = scaler.transform(X_test)
 
 print(f"Train size: {len(X_train)} | Test size: {len(X_test)}")
 
+# Model Training
+def train_regressor(X_tr, y_tr):
+    model = LinearRegression()
+    model.fit(X_tr, y_tr)
+    return model
+
+def train_classifier(X_tr, y_tr):
+    model = LogisticRegression()
+    model.fit(X_tr, y_tr)
+    return model
+
+reg_model = train_regressor(X_train_scaled, y_train_reg)
+cls_model = train_classifier(X_train_scaled, y_train_cls)
+
+def evaluate_regressor(model, X_te, y_te):
+    y_pred = model.predict(X_te)
+    rmse = np.sqrt(mean_squared_error(y_te, y_pred))
+    mae = mean_absolute_error(y_te, y_pred)
+    r2 = r2_score(y_te, y_pred)
+    print(f"\n[Regression] R2: {r2:.3f} | RMSE: {rmse:.3f} | MAE: {mae:.3f}")
+    return y_pred
+
+def evaluate_classifier(model, X_te, y_te):
+    y_pred = model.predict(X_te)
+    acc = accuracy_score(y_te, y_pred)
+    prec = precision_score(y_te, y_pred, zero_division=0)
+    rec = recall_score(y_te, y_pred, zero_division=0)
+    f1 = f1_score(y_te, y_pred, zero_division=0)
+    cm = confusion_matrix(y_te, y_pred)
+    print(f"[Classification] Acc: {acc:.3f} | Prec: {prec:.3f} | Rec: {rec:.3f} | F1: {f1:.3f}")
+    return y_pred, cm
+
+reg_preds = evaluate_regressor(reg_model, X_test_scaled, y_test_reg)
+cls_preds, cm = evaluate_classifier(cls_model, X_test_scaled, y_test_cls)
