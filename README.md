@@ -91,7 +91,43 @@ The project will follow these stages:
 
 # 7. Project Structure
 
-The final repository structure will be documented here after implementation.
+## 7. Project Structure
+
+The repository is organised into the following files and directories:
+
+```text
+ai101_project82/
+│
+├── README.md
+├── Renewable.csv
+├── analysis.py
+├── requirements.txt
+│
+├── outputs/
+│   ├── figures/
+│   │   └── README.md
+│   └── results/
+│       └── README.md
+│
+├── presentation/
+│   └── README.md
+│
+└── video/
+    └── README.md
+```
+
+### Description of Files and Directories
+
+| File/Directory | Description |
+|---|---|
+| README.md | Main project documentation |
+| Renewable.csv | Renewable energy and weather dataset |
+| analysis.py | Python analysis script |
+| requirements.txt | Required Python libraries |
+| outputs/figures/ | Stores generated graphs and visualizations |
+| outputs/results/ | Stores statistical results and analysis outputs |
+| presentation/ | Stores the final project presentation |
+| video/ | Stores project demonstration video information |
 
 # 8. Technologies and Libraries
 
