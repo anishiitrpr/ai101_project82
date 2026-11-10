@@ -71,3 +71,18 @@ print("\nFinal Dataset information:")
 print(df.info())
 print("\nFinal Dataset:")
 print(df.head())
+
+#Save cleaned dataset 
+df.to_csv("cleaned_data.csv",index=False)
+print("\nCleaned dataset saves susccesfully !")
+print("Final dataset shape",df.shape)
+
+#Verify cleaned dataset 
+print("\nMissing values after cleaning")
+print(df.isnull().sum())
+print("\nDuplicate records after cleaning ")
+print(df.duplicated().sum())
+print("\nFinal columns :")
+print(df.columns.tolist())
+print("\nFinal data shape:")
+print(df.shape)
