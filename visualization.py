@@ -1,26 +1,22 @@
 import pandas as pd
 import numpy as np
 
-# Load renewable energy dataset
 df = pd.read_csv("Renewable.csv")
 
-# 1. Dataset dimensions
 print("Dataset Shape:")
 print(df.shape)
 
-# 2. Column names
 print("\nColumn Names:")
 print(df.columns.tolist())
 
-# 3. Data types
 print("\nData Types:")
 print(df.dtypes)
 
-# 4. First five records
+
 print("\nFirst 5 Rows:")
 print(df.head())
 
-# 5. Statistical summary
+
 print("\nStatistical Summary:")
 print(df.describe())
 
@@ -32,13 +28,13 @@ print("\n" + "=" * 50)
 print("STATISTICAL ANALYSIS")
 print("=" * 50)
 
-# Select all numerical columns
+
 numeric_df = df.select_dtypes(include="number")
 
 print("\nNumerical Columns:")
 print(numeric_df.columns.tolist())
 
-# Calculate statistical measures
+
 if not numeric_df.empty:
 
     statistics = pd.DataFrame({
@@ -55,7 +51,7 @@ if not numeric_df.empty:
 else:
     print("No numerical columns found.")
 
-# Check missing values
+
 print("\nMissing Values:")
 print(df.isnull().sum())
 
@@ -70,10 +66,8 @@ import seaborn as sns
 
 import os
 
-# Create folder to save graphs
 os.makedirs("results", exist_ok=True)
 
-# Identify numerical and categorical columns
 numeric_cols = df.select_dtypes(include="number").columns.tolist()
 categorical_cols = df.select_dtypes(include="object").columns.tolist()
 
@@ -81,7 +75,7 @@ sns.set_theme(style="whitegrid")
 
 print("\n--- FINAL DATA ANALYSIS ---")
 
-# 1. Correlation Analysis
+#  Correlation Analysis
 if len(numeric_cols) >= 2:
     corr = df[numeric_cols].corr()
 
@@ -96,7 +90,7 @@ if len(numeric_cols) >= 2:
     plt.savefig("results/correlation_heatmap.png")
     plt.close()
 
-   # 2. Weather vs Energy Output Comparisons
+   # Weather vs Energy Output Comparisons
 
 energy_col = next(
     (c for c in df.columns
@@ -178,7 +172,7 @@ if source_col and numeric_cols:
     plt.savefig("results/energy_comparison.png")
     plt.close()
 
-#  Energy Production Trend (if year/date exists)
+#  Energy Production Trend
 time_col = next(
     (c for c in df.columns
      if any(word in c.lower() for word in ["year", "date"])),
