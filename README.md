@@ -370,7 +370,15 @@ The dataset is successfully loaded, inspected, cleaned, and prepared for further
 
 # 12. AI Use Disclosure
 
-AI tools, if used, will be disclosed with details of their purpose and the verification performed by the team.
+## AI-Use Disclosure
+
+AI tools were used as supporting resources during the development and documentation of this project.
+
+- **ChatGPT:** Used for understanding Python concepts, debugging assistance, code suggestions, README documentation, and guidance on data analysis.
+- **Claude:** Python coding assistance, troubleshooting and GitHub guidance.
+- **Code Review and Verification:** AI-generated suggestions were reviewed by team members, modified where necessary, and tested locally before being included in the project.
+
+AI tools were used to assist the development process and not as a replacement for the team's understanding, implementation, or verification.
 
 # 13. Limitations
 
