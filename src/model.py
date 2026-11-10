@@ -1,89 +1,61 @@
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression, LogisticRegression
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
+from sklearn.metrics import mean_squared_error, r2_score, accuracy_score
 
+print("Running model.py...")
+
+# 1. Load the cleaned dataset
 df = pd.read_csv("data/cleaned_data.csv")
 
-feature_cols = [col for col in ["temp", "humidity", "wind_speed", "GHI", "Hour", "Month"] if col in df.columns]
-if not feature_cols:
-    feature_cols = [c for c in df.select_dtypes(include=np.number).columns if "energy" not in c.lower()]
+# 2. Select features and target variables
+# Hardcoding the weather columns we want to use for predictions
+X = df[['temp', 'humidity', 'wind_speed', 'GHI']]
 
-target_col = next(c for c in df.columns if any(k in c.lower() for k in ["energy", "output", "wh"]))
+# Target for Linear Regression (continuous values)
+y_continuous = df['Energy delta[Wh]']
 
-X = df[feature_cols]
-y_reg = df[target_col]
-y_cls = (y_reg >= y_reg.median()).astype(int)
+# Target for Logistic Regression (0 for no energy, 1 for energy produced)
+# This simple logic fixes the 1-class ValueError
+df['energy_class'] = 0
+df.loc[df['Energy delta[Wh]'] > 0, 'energy_class'] = 1
+y_categorical = df['energy_class']
 
-print("Features selected:", feature_cols)
-print("Target column:", target_col)
+# 3. Split the data into 80% training and 20% testing
+X_train, X_test, y_train_reg, y_test_reg = train_test_split(X, y_continuous, test_size=0.2, random_state=42)
+# We can use the same X split for classification
+_, _, y_train_cls, y_test_cls = train_test_split(X, y_categorical, test_size=0.2, random_state=42)
 
-X_train, X_test, y_train_reg, y_test_reg, y_train_cls, y_test_cls = train_test_split(
-    X, y_reg, y_cls, test_size=0.2, random_state=42
-)
-
+# 4. Scale the data so all features have equal weight
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-print(f"Train size: {len(X_train)} | Test size: {len(X_test)}")
+# 5. Train Linear Regression Model
+print("\n--- Training Linear Regression ---")
+lin_model = LinearRegression()
+lin_model.fit(X_train_scaled, y_train_reg)
 
-def train_regressor(X_tr, y_tr):
-    model = LinearRegression()
-    model.fit(X_tr, y_tr)
-    return model
+reg_predictions = lin_model.predict(X_test_scaled)
 
-def train_classifier(X_tr, y_tr):
-    model = LogisticRegression()
-    model.fit(X_tr, y_tr)
-    return model
+# Calculate and print metrics
+r2 = r2_score(y_test_reg, reg_predictions)
+rmse = np.sqrt(mean_squared_error(y_test_reg, reg_predictions))
 
-reg_model = train_regressor(X_train_scaled, y_train_reg)
-cls_model = train_classifier(X_train_scaled, y_train_cls)
+print("Linear Regression R2 Score:", round(r2, 3))
+print("Linear Regression RMSE:", round(rmse, 3))
 
-def evaluate_regressor(model, X_te, y_te):
-    y_pred = model.predict(X_te)
-    rmse = np.sqrt(mean_squared_error(y_te, y_pred))
-    mae = mean_absolute_error(y_te, y_pred)
-    r2 = r2_score(y_te, y_pred)
-    print(f"\n[Regression] R2: {r2:.3f} | RMSE: {rmse:.3f} | MAE: {mae:.3f}")
-    return y_pred
+# 6. Train Logistic Regression Model
+print("\n--- Training Logistic Regression ---")
+log_model = LogisticRegression()
+log_model.fit(X_train_scaled, y_train_cls)
 
-def evaluate_classifier(model, X_te, y_te):
-    y_pred = model.predict(X_te)
-    acc = accuracy_score(y_te, y_pred)
-    prec = precision_score(y_te, y_pred, zero_division=0)
-    rec = recall_score(y_te, y_pred, zero_division=0)
-    f1 = f1_score(y_te, y_pred, zero_division=0)
-    cm = confusion_matrix(y_te, y_pred)
-    print(f"[Classification] Acc: {acc:.3f} | Prec: {prec:.3f} | Rec: {rec:.3f} | F1: {f1:.3f}")
-    return y_pred, cm
+cls_predictions = log_model.predict(X_test_scaled)
 
-reg_preds = evaluate_regressor(reg_model, X_test_scaled, y_test_reg)
-cls_preds, cm = evaluate_classifier(cls_model, X_test_scaled, y_test_cls)
+# Calculate and print accuracy
+accuracy = accuracy_score(y_test_cls, cls_predictions)
+print("Logistic Regression Accuracy:", round(accuracy, 3))
 
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-axes[0].scatter(y_test_reg, reg_preds, alpha=0.5, color="blue")
-axes[0].plot([y_test_reg.min(), y_test_reg.max()], [y_test_reg.min(), y_test_reg.max()], 'r--', lw=2)
-axes[0].set_title("Actual vs Predicted Energy Output")
-axes[0].set_xlabel("Actual Values")
-axes[0].set_ylabel("Predicted Values")
-
-sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", ax=axes[1], xticklabels=["Low", "High"], yticklabels=["Low", "High"])
-axes[1].set_title("Confusion Matrix (Output State)")
-axes[1].set_xlabel("Predicted")
-axes[1].set_ylabel("Actual")
-
-plt.tight_layout()
-plt.show()
-
-print("\n--- Problem Interpretation ---")
-print("1. Weather features correlate directly with renewable power production.")
-print("2. The RMSE quantifies prediction deviation in physical energy units.")
-print("3. Confusion matrix confirms high separation between high and low generation periods.")
+print("\nModel training completed successfully!")
