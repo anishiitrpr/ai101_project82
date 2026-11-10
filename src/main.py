@@ -1,30 +1,28 @@
 import subprocess
 import sys
-import time
+import os
 
-def run_script(script_path):
-    print(f"\nRunning: {script_path}")
-    start_time = time.time()
-    
-    result = subprocess.run([sys.executable, script_path], capture_output=False)
-    
+def run_script(script_path, root_dir):
+    print(f"\n--- Running: {os.path.basename(script_path)} ---")
+    # cwd=root_dir ensures the scripts always find the data/ folder correctly
+    result = subprocess.run([sys.executable, script_path], cwd=root_dir, capture_output=False)
     if result.returncode != 0:
-        print(f"\nError encountered while executing {script_path}. Execution stopped.")
-        sys.exit(result.returncode)
-        
-    elapsed = time.time() - start_time
-    print(f"Finished {script_path} successfully in {elapsed:.2f} seconds.\n")
+        print(f"Failed to run {os.path.basename(script_path)}")
+        sys.exit(1)
 
 if __name__ == "__main__":
-    print("Starting Renewable Energy ML Pipeline...")
+    # Get the directory where this main.py is located (src/)
+    src_dir = os.path.dirname(os.path.abspath(__file__))
+    # Get the main project folder (one level up from src/)
+    root_dir = os.path.dirname(src_dir)
     
-    pipeline_scripts = [
-        "src/preprocessing.py",
-        "src/visualization.py",
-        "src/model.py"
+    scripts = [
+        os.path.join(src_dir, "preprocessing.py"),
+        os.path.join(src_dir, "visualization.py"),
+        os.path.join(src_dir, "model.py")
     ]
     
-    for script in pipeline_scripts:
-        run_script(script)
+    for script in scripts:
+        run_script(script, root_dir)
         
-    print("Entire pipeline executed successfully.")
+    print("\nAll steps completed successfully!")
