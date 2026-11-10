@@ -100,7 +100,7 @@ ai101_project82/
 │
 ├── README.md
 ├── Renewable.csv
-├── analysis.py
+├── main.py
 ├── requirements.txt
 │
 ├── outputs/
@@ -122,7 +122,7 @@ ai101_project82/
 |---|---|
 | README.md | Main project documentation |
 | Renewable.csv | Renewable energy and weather dataset |
-| analysis.py | Python analysis script |
+| main.py | Python analysis script |
 | requirements.txt | Required Python libraries |
 | outputs/figures/ | Stores generated graphs and visualizations |
 | outputs/results/ | Stores statistical results and analysis outputs |
