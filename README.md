@@ -200,47 +200,52 @@ python3 main.py
 
 # 10. Results and Expected Output
 
-                  Time  Energy delta[Wh]  GHI  temp  ...  SunlightTime/daylength  weather_type  hour  month
-0  2017-01-01 00:00:00                 0  0.0   1.6  ...                     0.0             4     0      1
-1  2017-01-01 00:15:00                 0  0.0   1.6  ...                     0.0             4     0      1
-2  2017-01-01 00:30:00                 0  0.0   1.6  ...                     0.0             4     0      1
-3  2017-01-01 00:45:00                 0  0.0   1.6  ...                     0.0             4     0      1
-4  2017-01-01 01:00:00                 0  0.0   1.7  ...                     0.0             4     1      1
+## Output After Execution
+
+After running the project, the program displays the following dataset inspection, cleaning, and preprocessing results.
+
+### 1. Initial Dataset Preview
+
+```text
+         Time             Energy delta[Wh]  GHI  temp  ...  weather_type  hour  month
+0  2017-01-01 00:00:00          0           0.0  1.6   ...       4         0     1
+1  2017-01-01 00:15:00          0           0.0  1.6   ...       4         0     1
+2  2017-01-01 00:30:00          0           0.0  1.6   ...       4         0     1
+3  2017-01-01 00:45:00          0           0.0  1.6   ...       4         0     1
+4  2017-01-01 01:00:00          0           0.0  1.7   ...       4         1     1
 
 [5 rows x 17 columns]
-<class 'pandas.DataFrame'>
-RangeIndex: 196776 entries, 0 to 196775
-Data columns (total 17 columns):
- #   Column                  Non-Null Count   Dtype  
----  ------                  --------------   -----  
- 0   Time                    196776 non-null  str    
- 1   Energy delta[Wh]        196776 non-null  int64  
- 2   GHI                     196776 non-null  float64
- 3   temp                    196776 non-null  float64
- 4   pressure                196776 non-null  int64  
- 5   humidity                196776 non-null  int64  
- 6   wind_speed              196776 non-null  float64
- 7   rain_1h                 196776 non-null  float64
- 8   snow_1h                 196776 non-null  float64
- 9   clouds_all              196776 non-null  int64  
- 10  isSun                   196776 non-null  int64  
- 11  sunlightTime            196776 non-null  int64  
- 12  dayLength               196776 non-null  int64  
- 13  SunlightTime/daylength  196776 non-null  float64
- 14  weather_type            196776 non-null  int64  
- 15  hour                    196776 non-null  int64  
- 16  month                   196776 non-null  int64  
-dtypes: float64(6), int64(10), str(1)
-memory usage: 25.5 MB
-None
-Index(['Time', 'Energy delta[Wh]', 'GHI', 'temp', 'pressure', 'humidity',
-       'wind_speed', 'rain_1h', 'snow_1h', 'clouds_all', 'isSun',
-       'sunlightTime', 'dayLength', 'SunlightTime/daylength', 'weather_type',
-       'hour', 'month'],
-      dtype='str')
-(196776, 17)
+```
 
+### 2. Dataset Information
+
+```text
+RangeIndex: 196776 entries, 0 to 196775
+Data columns (total 17 columns)
+
+Non-Null Count: 196776 for all 17 columns
+
+dtypes:
+float64(6)
+int64(10)
+str(1)
+
+memory usage: 25.5 MB
+```
+
+### 3. Dataset Dimensions
+
+```text
+(196776, 17)
+```
+
+The dataset contains **196,776 records and 17 columns**.
+
+### 4. Missing Values Analysis
+
+```text
 Missing Values:
+
 Time                      0
 Energy delta[Wh]          0
 GHI                       0
@@ -258,159 +263,105 @@ SunlightTime/daylength    0
 weather_type              0
 hour                      0
 month                     0
-dtype: int64
+```
 
+### 5. Duplicate Records
+
+```text
 Duplicate Records:
 0
+```
 
-Statistical Summary
-       Energy delta[Wh]            GHI           temp  ...   weather_type           hour          month
-count     196776.000000  196776.000000  196776.000000  ...  196776.000000  196776.000000  196776.000000
-mean         573.008228      32.596538       9.790521  ...       3.198398      11.498902       6.298329
-std         1044.824047      52.172018       7.995428  ...       1.289939       6.921887       3.376066
-min            0.000000       0.000000     -16.600000  ...       1.000000       0.000000       1.000000
-25%            0.000000       0.000000       3.600000  ...       2.000000       5.000000       3.000000
-50%            0.000000       1.600000       9.300000  ...       4.000000      11.000000       6.000000
-75%          577.000000      46.800000      15.700000  ...       4.000000      17.000000       9.000000
-max         5020.000000     229.200000      35.800000  ...       5.000000      23.000000      12.000000
+### 6. Statistical Summary
+
+```text
+       Energy delta[Wh]       GHI          temp
+count  196776.000000     196776.000000  196776.000000
+mean      573.008228         32.596538       9.790521
+std      1044.824047         52.172018       7.995428
+min         0.000000          0.000000     -16.600000
+25%         0.000000          0.000000       3.600000
+50%         0.000000          1.600000       9.300000
+75%       577.000000         46.800000      15.700000
+max      5020.000000        229.200000      35.800000
 
 [8 rows x 16 columns]
+```
 
-Column Names
-['Time', 'Energy delta[Wh]', 'GHI', 'temp', 'pressure', 'humidity', 'wind_speed', 'rain_1h', 'snow_1h', 'clouds_all', 'isSun', 'sunlightTime', 'dayLength', 'SunlightTime/daylength', 'weather_type', 'hour', 'month']
+### 7. Data Preprocessing
 
-Data Types
-Time                          str
-Energy delta[Wh]            int64
-GHI                       float64
-temp                      float64
-pressure                    int64
-humidity                    int64
-wind_speed                float64
-rain_1h                   float64
-snow_1h                   float64
-clouds_all                  int64
-isSun                       int64
-sunlightTime                int64
-dayLength                   int64
-SunlightTime/daylength    float64
-weather_type                int64
-hour                        int64
-month                       int64
-dtype: object
+The program performs the following operations:
 
-Missing Value
-Time                      0
-Energy delta[Wh]          0
-GHI                       0
-temp                      0
-pressure                  0
-humidity                  0
-wind_speed                0
-rain_1h                   0
-snow_1h                   0
-clouds_all                0
-isSun                     0
-sunlightTime              0
-dayLength                 0
-SunlightTime/daylength    0
-weather_type              0
-hour                      0
-month                     0
+- Checks missing values.
+- Identifies duplicate records.
+- Removes duplicate records.
+- Converts the `Time` column into datetime format.
+- Displays the cleaned dataset information.
 
-First 10 Records
-                  Time  Energy delta[Wh]  GHI  temp  ...  SunlightTime/daylength  weather_type  hour  month
-0  2017-01-01 00:00:00                 0  0.0   1.6  ...                     0.0             4     0      1
-1  2017-01-01 00:15:00                 0  0.0   1.6  ...                     0.0             4     0      1
-2  2017-01-01 00:30:00                 0  0.0   1.6  ...                     0.0             4     0      1
-3  2017-01-01 00:45:00                 0  0.0   1.6  ...                     0.0             4     0      1
-4  2017-01-01 01:00:00                 0  0.0   1.7  ...                     0.0             4     1      1
-5  2017-01-01 01:15:00                 0  0.0   1.7  ...                     0.0             4     1      1
-6  2017-01-01 01:30:00                 0  0.0   1.7  ...                     0.0             4     1      1
-7  2017-01-01 01:45:00                 0  0.0   1.7  ...                     0.0             4     1      1
-8  2017-01-01 02:00:00                 0  0.0   1.9  ...                     0.0             4     2      1
-9  2017-01-01 02:15:00                 0  0.0   1.9  ...                     0.0             4     2      1
-
-[10 rows x 17 columns]
-
-Duplicate Records
-0
-
+```text
 Dataset after removing duplicates:
 (196776, 17)
 
 Time column converted successfully
+
 datetime64[us]
+```
 
+### 8. Final Dataset Information
+
+```text
 Final Dataset information:
-<class 'pandas.DataFrame'>
+
 RangeIndex: 196776 entries, 0 to 196775
-Data columns (total 17 columns):
- #   Column                  Non-Null Count   Dtype         
----  ------                  --------------   -----         
- 0   Time                    196776 non-null  datetime64[us]
- 1   Energy delta[Wh]        196776 non-null  int64         
- 2   GHI                     196776 non-null  float64       
- 3   temp                    196776 non-null  float64       
- 4   pressure                196776 non-null  int64         
- 5   humidity                196776 non-null  int64         
- 6   wind_speed              196776 non-null  float64       
- 7   rain_1h                 196776 non-null  float64       
- 8   snow_1h                 196776 non-null  float64       
- 9   clouds_all              196776 non-null  int64         
- 10  isSun                   196776 non-null  int64         
- 11  sunlightTime            196776 non-null  int64         
- 12  dayLength               196776 non-null  int64         
- 13  SunlightTime/daylength  196776 non-null  float64       
- 14  weather_type            196776 non-null  int64         
- 15  hour                    196776 non-null  int64         
- 16  month                   196776 non-null  int64         
-dtypes: datetime64[us](1), float64(6), int64(10)
+Data columns (total 17 columns)
+
+Time                     datetime64[us]
+Energy delta[Wh]         int64
+GHI                      float64
+temp                     float64
+pressure                 int64
+humidity                 int64
+wind_speed               float64
+rain_1h                  float64
+snow_1h                  float64
+clouds_all               int64
+isSun                    int64
+sunlightTime             int64
+dayLength                int64
+SunlightTime/daylength   float64
+weather_type             int64
+hour                     int64
+month                    int64
+
 memory usage: 25.5 MB
-None
+```
 
-Final Dataset:
-                 Time  Energy delta[Wh]  GHI  temp  ...  SunlightTime/daylength  weather_type  hour  month
-0 2017-01-01 00:00:00                 0  0.0   1.6  ...                     0.0             4     0      1
-1 2017-01-01 00:15:00                 0  0.0   1.6  ...                     0.0             4     0      1
-2 2017-01-01 00:30:00                 0  0.0   1.6  ...                     0.0             4     0      1
-3 2017-01-01 00:45:00                 0  0.0   1.6  ...                     0.0             4     0      1
-4 2017-01-01 01:00:00                 0  0.0   1.7  ...                     0.0             4     1      1
+### 9. Final Cleaning Results
 
-[5 rows x 17 columns]
+```text
+Cleaned dataset saved successfully!
 
-Cleaned dataset saves susccesfully !
-Final dataset shape (196776, 17)
+Final dataset shape: (196776, 17)
 
-Missing values after cleaning
-Time                      0
-Energy delta[Wh]          0
-GHI                       0
-temp                      0
-pressure                  0
-humidity                  0
-wind_speed                0
-rain_1h                   0
-snow_1h                   0
-clouds_all                0
-isSun                     0
-sunlightTime              0
-dayLength                 0
-SunlightTime/daylength    0
-weather_type              0
-hour                      0
-month                     0
-dtype: int64
+Missing values after cleaning: 0
+Duplicate records after cleaning: 0
+```
 
-Duplicate records after cleaning 
-0
+### 10. Final Output
 
-Final columns :
-['Time', 'Energy delta[Wh]', 'GHI', 'temp', 'pressure', 'humidity', 'wind_speed', 'rain_1h', 'snow_1h', 'clouds_all', 'isSun', 'sunlightTime', 'dayLength', 'SunlightTime/daylength', 'weather_type', 'hour', 'month']
+```text
+Final columns:
+
+['Time', 'Energy delta[Wh]', 'GHI', 'temp', 'pressure',
+ 'humidity', 'wind_speed', 'rain_1h', 'snow_1h',
+ 'clouds_all', 'isSun', 'sunlightTime', 'dayLength',
+ 'SunlightTime/daylength', 'weather_type', 'hour', 'month']
 
 Final data shape:
 (196776, 17)
-(venv) dharmesh@Dharmeshs-MacBook-Air ai101_project82 % 
+```
+
+The dataset is successfully loaded, inspected, cleaned, and prepared for further analysis.
 
 # 11. Presentation and Video
 
