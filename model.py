@@ -10,6 +10,7 @@ from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
+
 #loading the data and selecting the features
 df = pd.read_csv("cleaned_data.csv")
 
@@ -28,3 +29,16 @@ y_cls = (y_reg >= y_reg.median()).astype(int)
 
 print("Features selected:", feature_cols)
 print("Target column:", target_col)
+
+
+# data splitting and normalization(80% train 20% test split)
+# 80% train, 20% test split
+X_train, X_test, y_train_reg, y_test_reg, y_train_cls, y_test_cls = train_test_split(
+    X, y_reg, y_cls, test_size=0.2, random_state=42
+)
+scaler = StandardScaler() #feature scaling
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+print(f"Train size: {len(X_train)} | Test size: {len(X_test)}")
+
