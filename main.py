@@ -139,3 +139,34 @@ df.to_csv("feature_engineered_data.csv",index=False)
 
 print("\nFeature engineered dataset savd successfully")
 print("final shape",df.shape)
+
+# Final dataset validation
+
+import os
+import pandas as pd
+
+file_name = "cleaned_data.csv"
+
+if os.path.exists(file_name):
+
+    final_df = pd.read_csv(file_name)
+
+    print("\n----- FINAL DATASET VALIDATION -----")
+
+    print("File exists: Yes")
+    print("Dataset loaded successfully")
+
+    print("Rows:", final_df.shape[0])
+    print("Columns:", final_df.shape[1])
+
+    print("\nColumn names:")
+    print(final_df.columns.tolist())
+
+    print("\nMissing values:")
+    print(final_df.isnull().sum())
+
+    print("\nDuplicate rows:")
+    print(final_df.duplicated().sum())
+
+else:
+    print("Error: Cleaned dataset not found!")
