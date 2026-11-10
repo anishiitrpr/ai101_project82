@@ -1,4 +1,3 @@
-#importing libraries
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -10,11 +9,8 @@ from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
+df = pd.read_csv("data/cleaned_data.csv")
 
-#loading the data and selecting the features
-df = pd.read_csv("cleaned_data.csv")
-
-# Detect weather features and target energy column
 feature_cols = [col for col in ["temp", "humidity", "wind_speed", "GHI", "Hour", "Month"] if col in df.columns]
 if not feature_cols:
     feature_cols = [c for c in df.select_dtypes(include=np.number).columns if "energy" not in c.lower()]
@@ -23,25 +19,21 @@ target_col = next(c for c in df.columns if any(k in c.lower() for k in ["energy"
 
 X = df[feature_cols]
 y_reg = df[target_col]
-
 y_cls = (y_reg >= y_reg.median()).astype(int)
 
 print("Features selected:", feature_cols)
 print("Target column:", target_col)
 
-
-# data splitting and normalization(80% train 20% test split)
-# 80% train, 20% test split
 X_train, X_test, y_train_reg, y_test_reg, y_train_cls, y_test_cls = train_test_split(
     X, y_reg, y_cls, test_size=0.2, random_state=42
 )
-scaler = StandardScaler() #feature scaling
+
+scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
 print(f"Train size: {len(X_train)} | Test size: {len(X_test)}")
 
-# Model Training
 def train_regressor(X_tr, y_tr):
     model = LinearRegression()
     model.fit(X_tr, y_tr)
@@ -76,19 +68,14 @@ def evaluate_classifier(model, X_te, y_te):
 reg_preds = evaluate_regressor(reg_model, X_test_scaled, y_test_reg)
 cls_preds, cm = evaluate_classifier(cls_model, X_test_scaled, y_test_cls)
 
-
-#Plots and interpretation
-
 fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-# Actual vs Predicted Plot
 axes[0].scatter(y_test_reg, reg_preds, alpha=0.5, color="blue")
 axes[0].plot([y_test_reg.min(), y_test_reg.max()], [y_test_reg.min(), y_test_reg.max()], 'r--', lw=2)
 axes[0].set_title("Actual vs Predicted Energy Output")
 axes[0].set_xlabel("Actual Values")
 axes[0].set_ylabel("Predicted Values")
-# Confusion Matrix 
-sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", ax=axes[1],
-            xticklabels=["Low", "High"], yticklabels=["Low", "High"])
+
+sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", ax=axes[1], xticklabels=["Low", "High"], yticklabels=["Low", "High"])
 axes[1].set_title("Confusion Matrix (Output State)")
 axes[1].set_xlabel("Predicted")
 axes[1].set_ylabel("Actual")
