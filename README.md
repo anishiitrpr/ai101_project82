@@ -99,37 +99,30 @@ All of these steps run one after another from `src/main.py`.
 ai101_project82/
 ├── README.md
 ├── requirements.txt
-├── .gitignore
 │
 ├── data/
-│   ├── raw/
-│   │   └── Renewable.csv                  original dataset
-│   └── processed/
-│       ├── cleaned_data.csv               saved after cleaning
-│       └── feature_engineered_data.csv    data with extra columns
+│   └── Renewable.csv                       original dataset
+│
+├── docs/
+│   ├── Presentation.md
+│   ├── Video.md
+│   ├── presentation_sehajreen.pptx
+│   └── sehajreen_group82_miniproject....   (name is cut off in the screenshot)
 │
 ├── src/
-│   ├── main.py                            runs everything in order
-│   ├── preprocessing.py                   step 1, cleaning
-│   ├── visualization.py                   step 2, statistics and graphs
-│   └── model.py                           step 3, model training
+│   ├── main.py                             runs everything in order
+│   ├── preprocessing.py                    step 1, cleaning
+│   ├── visualization.py                    step 2, statistics and graphs
+│   └── model.py                            step 3, model training
 │
-├── results/
-│   ├── figures/
-│   │   ├── correlation_heatmap.png
-│   │   ├── energy_vs_GHI.png
-│   │   ├── energy_vs_temp.png
-│   │   ├── energy_vs_humidity.png
-│   │   ├── energy_vs_wind_speed.png
-│   │   ├── monthly_energy_comparison.png
-│   │   └── scatter_comparison.png
-│   └── model_scores.txt                   saved model results
-│
-└── docs/
-    ├── Presentation.md
-    ├── Video.md
-    ├── presentation_sehajreen.pptx
-    └── sehajreen_group82_miniproject.pdf
+└── results/                                graphs are saved here
+    ├── correlation_heatmap.png
+    ├── energy_vs_GHI.png
+    ├── energy_vs_temp.png
+    ├── energy_vs_humidity.png
+    ├── energy_vs_wind_speed.png
+    ├── monthly_energy_comparison.png
+    └── scatter_comparison.png
 ```
 
 What each script does:
