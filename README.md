@@ -19,7 +19,10 @@ What we wanted to do:
 
 ## Presentation and video
 
-- Presentation: https://ap.wps.com/cms/docs/d/cbCaeptmYdv09MIl?lg=en-US&sa=601.1074&ps=0&refer=whatsapp
+- Presentation:https://ap.wps.com/cms/docs/d/cbCaejlEJ5rnPRvd?lg=en-US&sa=601.1074&ps=0&refer=whatsapp
+
+Open in APP:
+https://go.wps.com/s2AyesJmSFTD
 
 - Demo video: https://drive.google.com/file/d/1X1S9p3EOGHnM9SQkUtwmsvvOoMB5SnAL/view?usp=sharing
 
