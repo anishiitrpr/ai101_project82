@@ -9,3 +9,4 @@ The video will cover:
 - Project execution from GitHub
 - Results and visualizations
 - Conclusions and AI usage
+video link:- https://drive.google.com/file/d/1tMJx12k1yv1HUGEdUWCQuaKLtxH8mLHD/view?usp=drivesdk
