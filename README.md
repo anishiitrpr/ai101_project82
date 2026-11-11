@@ -107,7 +107,7 @@ ai101_project82/
 │   ├── Presentation.md
 │   ├── Video.md
 │   ├── presentation_sehajreen.pptx
-│   └── sehajreen_group82_miniproject....   (name is cut off in the screenshot)
+│   └── sehajreen_group82_miniproject.pdf  
 │
 ├── src/
 │   ├── main.py                             runs everything in order
