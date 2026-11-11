@@ -24,7 +24,7 @@ What we wanted to do:
 Open in APP:
 https://go.wps.com/s2AyesJmSFTD
 
-- Demo video: https://drive.google.com/file/d/1X1S9p3EOGHnM9SQkUtwmsvvOoMB5SnAL/view?usp=sharing
+- Demo video: https://drive.google.com/file/d/1tMJx12k1yv1HUGEdUWCQuaKLtxH8mLHD/view?usp=drivesdk
 
 ## Quick start
 
