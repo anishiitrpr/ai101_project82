@@ -21,8 +21,6 @@ What we wanted to do:
 
 - Presentation:https://github.com/anishiitrpr/ai101_project82/blob/c6dd8f09eedc31c15e438abaf49535ca996c10bb/docs/sehajreen_group82_miniproject.pdf
 
-Open in APP:
-https://go.wps.com/s2AyesJmSFTD
 
 - Demo video: https://drive.google.com/file/d/1tMJx12k1yv1HUGEdUWCQuaKLtxH8mLHD/view?usp=drivesdk
 
