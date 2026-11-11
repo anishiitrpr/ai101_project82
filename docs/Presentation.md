@@ -9,3 +9,4 @@ The presentation will include:
 - Methodology and approach
 - Results and visualizations
 - Key learnings and team contributions
+- presentation link:- https://github.com/anishiitrpr/ai101_project82/blob/c6dd8f09eedc31c15e438abaf49535ca996c10bb/docs/sehajreen_group82_miniproject.pdf
