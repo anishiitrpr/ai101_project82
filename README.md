@@ -19,7 +19,10 @@ What we wanted to do:
 
 ## Presentation and video
 
-- Presentation: to be added
+- Presentation: https://ap.wps.com/cms/docs/d/cbCaeptmYdv09MIl?lg=en-US&sa=601.1074&ps=0&refer=whatsapp
+
+Open in APP:
+https://go.wps.com/sgbC7wX9VJ08
 - Demo video: to be added
 
 ## Quick start
@@ -45,7 +48,7 @@ More detailed setup steps are given further below.
 | Dharmesh Meena | 2026AIB1030 | Documentation Lead |
 | Anish Kumar | 2026AIB1015 | Video Lead |
 | Parmeet | 2026EEB1390 | Execution Lead |
-| Sehaj Reen | 2026EEB1409 | PPT Lead |
+| Sehajpreet Singh Reen | 2026EEB1409 | PPT Lead |
 
 ## Dataset
 
