@@ -21,9 +21,7 @@ What we wanted to do:
 
 - Presentation: https://ap.wps.com/cms/docs/d/cbCaeptmYdv09MIl?lg=en-US&sa=601.1074&ps=0&refer=whatsapp
 
-Open in APP:
-https://go.wps.com/sgbC7wX9VJ08
-- Demo video: to be added
+- Demo video: https://drive.google.com/file/d/1X1S9p3EOGHnM9SQkUtwmsvvOoMB5SnAL/view?usp=sharing
 
 ## Quick start
 
