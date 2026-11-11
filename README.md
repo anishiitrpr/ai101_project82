@@ -19,7 +19,7 @@ What we wanted to do:
 
 ## Presentation and video
 
-- Presentation:https://ap.wps.com/cms/docs/d/cbCaejlEJ5rnPRvd?lg=en-US&sa=601.1074&ps=0&refer=whatsapp
+- Presentation:https://github.com/anishiitrpr/ai101_project82/blob/c6dd8f09eedc31c15e438abaf49535ca996c10bb/docs/sehajreen_group82_miniproject.pdf
 
 Open in APP:
 https://go.wps.com/s2AyesJmSFTD
